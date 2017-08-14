@@ -1,0 +1,162 @@
+----------------------------
+ register user
+/users/rgister
+type :post
+name, email, username , password
+
+ Authentication
+/users//authenticate
+type :post
+username , password
+
+user profile
+/users/profile
+type :get
+
+delete user
+/users/delete
+type :post
+userid
+
+edit user info (update)
+/users/edit
+type :post
+id (as query)
+name, email, username , password
+
+post a comment on a Video
+/users/commentV
+type :post
+video id (as query)
+user id , content
+
+post a comment on event and rate
+/users/commentE
+type :post
+event id (as query)
+user id ,rate , content
+
+retrive events for a particular user
+/users/attendece
+type : get
+user id (as query)
+
+delete comment event
+/users/uncommentE
+type :post
+event id (as query)
+user id ,rate , content
+
+subscribe to attend event
+/users/attend
+type :post
+user id , event id
+
+unsubscribe to attend event
+/users/unattend
+type :post
+user id , event id
+
+list all of attendings users for event
+/users/attended
+type :get
+event id
+
+reset password request page
+/users/resetpw
+type :post
+user name
+
+reset new password
+/users/reset
+type :post
+token (as params)
+password
+-----------------------------------
+
+retrive all events
+/events/
+type: get
+
+retrive all events for a particular category(search category)
+/events/category/:category
+type: get
+category :String (params)
+
+retrive all events attendece tables
+/events/tables
+type: get
+
+retrive users attending particular event
+/events/users
+type: get
+event id
+
+delete event by id
+/events/delete
+type: post
+event id
+
+ create new event
+/events/create
+type: post
+title ,author , category, location(long , lat , address),date , start , end,
+description
+
+edit event by id
+/events/edit
+type: post
+id (as query)
+title ,author , category, location(long , lat , address),date , start , end,
+description
+----------------------------------
+
+Setting new Admin
+/panel/add
+type : post
+admin name:String
+admin pass:String
+
+Authentication
+/panel/authenticate
+type : post
+admin name:String
+admin pass:String
+
+
+/admin panel
+/panel/panel
+type : get
+
+delete Admin
+/panel/delete
+type : post
+admin id:String
+
+edit Admins info
+/panel/edit
+type : post
+admin id (as a query) :String
+admin new name if exist: String
+admin new role if exist: String
+-------------------------------------
+
+retrive all videos
+/videos/
+type : get
+
+add a new video
+/videos/add
+type: post
+title , url, description
+
+delete a video
+/videos/delete
+type: post
+id (as query)
+
+edit a video
+/video/edit
+type: post
+id (as query)
+title , url , description,comments
