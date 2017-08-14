@@ -1,0 +1,277 @@
+FORMAT: 1A
+
+VERSION: 1.0.0
+
+HOST: http://52.201.247.169:3030
+
+# Vent
+
+Coded and Designed by AbdEl-Hamid M.
+for more details =>
+LinkedIn: abdelhamid-m
+Phone: 201090106239 - E-mail: dev-hamid@outlook.com
+This is the Vent app Back-End Requests Doc.
+
+# Group Competitions
+
+## Competitions's Requests [/api]
+
+### Get All Competitions [GET /api/competition]
++ Response 200 (application/json)
+    + Attributes (array[Competition])
+
+### Get All Fixtures Tables [GET /api/fixtures]
++ Response 200 (application/json)
+    + Attributes (array[Fixtures])
+
+### Get All Results Tables[GET /api/results]
++ Response 200 (application/json)
+    + Attributes (array[Results])
+
+### Get All Standings Tables[GET /api/standings]
++ Response 200 (application/json)
+    + Attributes (array[Standings])
+
+### Get All Teams Tables[GET /api/teams]
++ Response 200 (application/json)
+    + Attributes (array[Team])
+
+### Create a Doc of Competition in DB[POST /api/CreateCompetition]
++ Request
+    + Attributes
+        + title : `premier-league` (string) - the title of the Competition
+        + standings : `58cf9a3a3ca5d434952d6999` (string) - The standings doc mongodb generated id
+        + fixtures : `58cf9a3a3ca5d434952d6999` (string) - The fixtures doc mongodb generated id
+        + archive : `58cf9a3a3ca5d434952d6999` (string) - The archive doc mongodb generated id
+        + results : `58cf9a3a3ca5d434952d6999` (string) - The results doc mongodb generated id
++ Response 200 (application/json)
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the Doc
+
+### Create a Doc of Fixtures in DB[POST /api/AddFixtures]
++ Request
+    + Attributes
+        + url : `http://www.flashscore.com/soccer/england/premier-league/fixtures/` (string) - flashscore Competition's fixtures link
++ Response 200 (application/json)
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the Doc
+
+### Create a Doc of Results in DB[POST /api/AddResults]
++ Request
+    + Attributes
+        + url : `http://www.flashscore.com/soccer/england/premier-league/results/` (string) - flashscore Competition's results link
++ Response 200 (application/json)
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the Doc
+
+### Create a Doc of Standings in DB[POST /api/AddStandings]
++ Request
+    + Attributes
+        + url : `http://www.flashscore.com/soccer/england/premier-league/standings/` (string) - flashscore Competition's standings link
++ Response 200 (application/json)
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the Doc
+
+### Create a Doc of Archive in DB[POST /api/AddArchive]
++ Request
+    + Attributes
+        + url : `http://www.flashscore.com/soccer/england/premier-league/archive/` (string) - flashscore Competition's archive link
++ Response 200 (application/json)
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the Doc
+
+### Create a Doc of Team in DB[POST /api/AddTeam]
++ Request
+    + Attributes
+        + url : `http://www.flashscore.com/team/arsenal/hA1Zm19f/` (string) - flashscore Team's link
++ Response 200 (application/json)
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the Doc
+
+### Delete a Doc of Competition with the results,standings,fixtures,archive ref from DB[DELETE /api/DeleteCompetition]
++ Request
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the Doc
++ Response 200 (application/json)
+    + Attributes
+        + msg : `all ref deleted` (string) - the default response msg
+
+### Delete a Doc of Fixtures from DB[DELETE /api/DeleteFixtures]
++ Request
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the Doc
++ Response 200 (application/json)
+    + Attributes
+        + fix  (Fixtures) - the deleted object
+### Delete a Doc of Results from DB[DELETE /api/DeleteResults]
++ Request
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the Doc
++ Response 200 (application/json)
+    + Attributes
+        + res  (Results) - the deleted object
+
+### Delete a Doc of Archive from DB[DELETE /api/DeleteArchive]
++ Request
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the Doc
++ Response 200 (application/json)
+    + Attributes
+        + arch  (Archive) - the deleted object
+
+#### Delete a Doc of Standings from DB[DELETE /api/DeleteStandings]
++ Request
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the Doc
++ Response 200 (application/json)
+    + Attributes
+        + stand  (Standings) - the deleted object
+
+#### Delete a Doc of Team from DB[DELETE /api/DeleteTeam]
++ Request
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the Doc
++ Response 200 (application/json)
+    + Attributes
+        + team  (Team) - the deleted object
+
+#### Update a Doc of Results for a particular Competition in DB[PUT /api/UpdateResults]
++ Request
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the old Doc
+        + resid : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the new Doc
++ Response 200 (application/json)
+    + Attributes
+        + res  (Results) - the Updated object
+
+#### Update a Doc of Standings for a particular Competition in DB[PUT /api/UpdateStandings]
++ Request
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the old Doc
+        + standid : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the new Doc
++ Response 200 (application/json)
+    + Attributes
+        + stand  (Standings) - the Updated object
+
+#### Update a Doc of Archive for a particular Competition in DB[PUT /api/UpdateArchive]
++ Request
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the old Doc
+        + archid : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the new Doc
++ Response 200 (application/json)
+    + Attributes
+        + arch  (Archive) - the Updated object
+
+#### Update a Doc of Archive for a particular Competition in DB[PUT /api/UpdateFixtures]
++ Request
+    + Attributes
+        + id : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the old Doc
+        + fixhid : `58cf9a3a3ca5d434952d6999` (string) - the mongodb generated id for the new Doc
++ Response 200 (application/json)
+    + Attributes
+        + fix  (Fixtures) - the Updated object
+
+# Group Users
+
+## Users's Requests [/users]
+### Get All Competitions [GET /users]
++ Response 200 (application/json)
+    + Attributes (array[User])
+
+#
+
+
+## Data Structures
+
+### Match
++ round : `38` (number) - The round number
++ date : `2014-11-11 08:40` (string) - the date of the match
++ HomeTeam : `Arsenal` (string) - The name of the Team that owns the land
++ AwayTeam : `Everton` (string) - The name of the second team
+
+### Result
++ Include Match
++ Result : `2 : 1` (string) - The result of the match
+
+### archives
++ Season : `Premier League 2016/2017` (string)
++ winner : `Leicester` (string) - the winner team
++ Link : `http://www.flashscore.com/soccer/england/premier-league-2013-2014/` (string) - the link to Season summary
+
+### Archive
++ url : `http://www.flashscore.com/soccer/england/premier-league/archive/` (string) - The Flash Score link to archive of particular competition
++ arch (array[archives]) - the archive tables
++ creationDate : `2014-11-11T08:40:51.620Z` (string) - ISO8601 the date when this a fixtures got created
++ lastupdate : `2014-11-11T08:40:51.620Z` (string) - ISO8601 the date when this a fixtures got updated
+
+### Players
++ position : `Goalkeepers` (string) - the position ih games
++ number : `1` (number) - the number of the player
++ name : `Begovic Asmir` (string) - the player name
++ match_played : `20` (number) - the number of match played
++ goals : `6` (number) - the number of goals scored by the player
++ yellow_cards : `0` (number) - the number of yellow cards earned
++ red_cards : `0` (number) - the number of red cards earned
+
+### standing
++ rank : `1` (number) - the rank of a team among the other teams
++ title : `Arsenal` (string) - the name of the team
++ played : `22` (number) - the number of matchs played by a team
++ win : `9` (number) - the number of matchs the team wins
++ draw : `12` (number) - the number of matchs the team draws
++ lose : `12` (number) - the number of matchs the team loses
++ goals : `12:16` (string) - the number of goals scored (by : in) the team
++ points : `44` (number) - the number of points gained by winning matchs
+
+### Fixtures
++ url: `http://www.flashscore.com/soccer/england/premier-league/fixtures/` (string) - The Flash Score link to fixtures of particular competition
++ fix (array[Match]) - the fixtures tables
++ creationDate : `2014-11-11T08:40:51.620Z` (string) - ISO8601 the date when this a fixtures got created
++ lastupdate : `2014-11-11T08:40:51.620Z` (string) - ISO8601 the date when this a fixtures got updated
+
+### Results
++ url: `http://www.flashscore.com/soccer/england/premier-league/results/` (string) - The Flash Score link to results of particular competition
++ res (array[Result]) - the results tables
++ creationDate : `2014-11-11T08:40:51.620Z` (string) - ISO8601 the date when this a fixtures got created
++ lastupdate : `2014-11-11T08:40:51.620Z` (string) - ISO8601 the date when this a fixtures got updated
+
+### Standings
++ url: `http://www.flashscore.com/soccer/england/premier-league/standings/` (string) - The Flash Score link to standings of particular competition
++ stand (array[standing]) - the standings tables
++ creationDate : `2014-11-11T08:40:51.620Z` (string) - ISO8601 the date when this a fixtures got created
++ lastupdate : `2014-11-11T08:40:51.620Z` (string) - ISO8601 the date when this a fixtures got updated
+
+### Team
++ title : `Chelsea` (string) - The Team's name
++ url: `http://www.flashscore.com/team/chelsea/4fGZN2oK/squad/` (string) - The Flash Score link to a team squad
++ squad (array[Players]) - squad Array
++ creationDate : `2014-11-11T08:40:51.620Z` (string) - ISO8601 the date when this a fixtures got created
++ lastupdate : `2014-11-11T08:40:51.620Z` (string) - ISO8601 the date when this a fixtures got updated
+
+### Competition
++ id : `58cf9a3a3ca5d434952d6999` (string) - The competition doc mongodb generated id
++ title : `premium_league` (string) - The Competition's title
++ standings : `58cf9a3a3ca5d434952d6999` (string) - The standings doc mongodb generated id
++ fixtures : `58cf9a3a3ca5d434952d6999` (string) - The fixtures doc mongodb generated id
++ archive : `58cf9a3a3ca5d434952d6999` (string) - The archive doc mongodb generated id
++ results : `58cf9a3a3ca5d434952d6999` (string) - The results doc mongodb generated id
++ creationDate : `2014-11-11T08:40:51.620Z` (string) - the date when this competition got created
+
+### User
++ Include Local
++ Include Facebook
++ Competitions : `58cf9a3a3ca5d434952d6999` (array) - The List of followed Competiions by the user
++ Teams : `58cf9a3a3ca5d434952d6999` (array) - The List of followed Teams by the user
++ creationDate : `2014-11-11T08:40:51.620Z` (string) - ISO8601 the date when this a fixtures got created
++ lastupdate : `2014-11-11T08:40:51.620Z` (string) - ISO8601 the date when this a fixtures got updated
+
+### Facebook (object)
++ id  (string) - Facebook ID
++ token (string) - Facebook token
++ name (string) - Facebook Full Name
+
+### Local (object)
++ name : `hamid muhammad` (string) - The user's full name
++ email : `7amid.vinci@gmail.com` (string) - The user's signed E-mail
++ username : `hamid0` (string) - The user's nikname or the name the other users will see
++ password : `1gdsh24n6546n` (string) - the user's password

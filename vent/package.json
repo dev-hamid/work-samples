@@ -1,0 +1,31 @@
+{
+  "name": "ventbackend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "after-load": "*",
+    "bcryptjs": "*",
+    "body-parser": "^1.17.0",
+    "cheerio": "^0.22.0",
+    "cheerio-tableparser": "^1.0.1",
+    "cors": "*",
+    "express": "^4.15.0",
+    "fs": "0.0.1-security",
+    "html-entities": "^1.2.0",
+    "jsonwebtoken": "*",
+    "mongoose": "^4.8.5",
+    "nodemailer": "^3.1.7",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "passport": "*",
+    "passport-facebook": "^2.1.1",
+    "passport-jwt": "*",
+    "path": "^0.12.7",
+    "request": "^2.80.0"
+  }
+}

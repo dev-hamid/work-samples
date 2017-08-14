@@ -1,0 +1,52 @@
+//fixtures for particular team ---prob
+router.get('/TeamFixtures', function(req, res) {
+    var html = afterLoad('http://www.flashscore.com/team/chelsea/4fGZN2oK/fixtures/');
+    var $ = afterLoad.$(html);
+    $ = cheerio.load($(html).html());
+    cheerioTableparser($);
+    var data = $('.soccer').parsetable(false, true, false);
+    var list = [];
+    var tournament = "";
+    for (var i in data[1]) {
+
+        $ = cheerio.load(data[1][i]);
+        var tourn = $('.tournament_part').text().trim();
+        if (i >= 0 && tourn.length > 0 && tourn !== "") {
+            tournament = tourn;
+
+        } else {
+
+            list.push({
+                "Round": tournament,
+                "Date": "",
+                "HomeTeam": "",
+                "AwayTeam": ""
+            });
+        }
+    }
+    j = 0;
+    for (i in data[1]) {
+        if (i >= 0 && data[1][i].length > 0 && i <= list.length && patternDate.test(data[1][i])) {
+            var dt = new Date(data[1][i].replace(patternDate, '2017-$2-$1 $3:$4'));
+            list[j++].Date = dt;
+        }
+    }
+    j = 0;
+    for (i in data[2]) {
+        $ = cheerio.load(data[2][i]);
+        var padr = $('.padr').text().trim();
+        if (i > 0 && padr.length > 0 && i <= list.length) {
+            list[j++].HomeTeam = padr;
+        }
+    }
+    j = 0;
+    for (i in data[3]) {
+        $ = cheerio.load(data[3][i]);
+        var padl = $('.padl').text().trim();
+        if (i > 0 && padl.length > 0 && i <= list.length) {
+
+            list[j++].AwayTeam = padl;
+        }
+    }
+    res.send(list);
+  });

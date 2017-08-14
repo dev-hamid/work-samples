@@ -1,0 +1,808 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Vent Backend
+host: 'localhost:5000'
+basePath: /
+tags:
+  - name: competition
+    description: Everything about competition
+  - name: user
+    description: Operations about user
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /api/competition:
+     get:
+       tags:
+         - competition
+       summary: retrive all competition from db
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       responses:
+        '200':
+          description: successful operation
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+  /api/fixtures:
+     get:
+       tags:
+         - competition
+       summary: retrive all fixtures tables
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       responses:
+        '200':
+          description: successful operation
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+  /api/standings:
+     get:
+       tags:
+         - competition
+       summary: retrive all standings tables
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       responses:
+        '200':
+          description: successful operation
+          schema:
+            type: object
+  /api/archives:
+     get:
+       tags:
+         - competition
+       summary: retrive all archives tables
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       responses:
+        '200':
+          description: successful operation
+          schema:
+            type: object
+  /api/results:
+     get:
+       tags:
+         - competition
+       summary: retrive all results tables
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       responses:
+        '200':
+          description: successful operation
+          schema:
+            type: object
+  /api/CreateCompetition:
+     post:
+       tags:
+         - competition
+       summary: Create Competition
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: title
+          in: query
+          description: The title of competition
+          required: true
+          type: string
+        - name: standings
+          in: query
+          description: The ObjectId for a standings
+          required: true
+          type: object
+          format: ObjectId
+        - name: fixtures
+          in: query
+          description: The ObjectId for a fixtures
+          required: true
+          type: object
+          format: ObjectId
+        - name: archive
+          in: query
+          description: The ObjectId for a archive
+          required: true
+          type: object
+          format: ObjectId
+        - name: results
+          in: query
+          description: The ObjectId for a results
+          required: true
+          type: object
+          format: ObjectId
+       responses:
+         default:
+           description: successful operation
+  /api/AddArchive:
+     post:
+       tags:
+         - competition
+       summary: Create Archive and adding it to db
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: url
+          in: body
+          description: Create Archive
+          required: true
+          type: string
+       responses:
+         default:
+           description: successful operation
+  /api/AddResults:
+     post:
+       tags:
+         - competition
+       summary: Create Results table and adding it to db
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: url
+          in: body
+          description: Create Results
+          required: true
+          schema:
+       responses:
+         default:
+           description: successful operation
+  /api/AddStandings:
+     post:
+       tags:
+         - competition
+       summary: Create Standings table and adding it to db
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: url
+          in: body
+          description: Create Standings
+          required: true
+       responses:
+         default:
+           description: successful operation
+  /api/DeleteCompetition:
+     post:
+       tags:
+         - competition
+       summary: Delete competition from db
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: id
+          in: body
+          description: id of competition to be deleted
+          required: true
+          schema:
+       responses:
+         default:
+           description: successful operation
+  /api/DeleteFixtures:
+     post:
+       tags:
+         - competition
+       summary: Delete fixtures from db
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: id
+          in: body
+          description: id of fixtures to be deleted
+          required: true
+          schema:
+       responses:
+         default:
+           description: successful operation
+  /api/DeleteResults:
+     post:
+       tags:
+         - competition
+       summary: Delete results from db
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: id
+          in: body
+          description: id of results to be deleted
+          required: true
+          schema:
+       responses:
+         default:
+           description: successful operation
+  /api/DeleteStandings:
+     post:
+       tags:
+         - competition
+       summary: Delete standings from db
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: id
+          in: body
+          description: id of satndings to be deleted
+          required: true
+          schema:
+       responses:
+         default:
+           description: successful operation
+  /api/DeleteArchive:
+     post:
+       tags:
+         - competition
+       summary: Delete archive from db
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: id
+          in: body
+          description: id of archive to be deleted
+          required: true
+          schema:
+       responses:
+         default:
+           description: successful operation        
+  /api/UpdateFixtures:
+     post:
+       tags:
+         - competition
+       summary: update competition's fixtures 
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: fixid 
+          in: body
+          description: id of new fixtures 
+          required: true
+        - name: competid
+          in: body
+          description: id of competition to be updated
+          required: true
+       responses:
+         default:
+           description: successful operation
+  /api/UpdateResults:
+     post:
+       tags:
+         - competition
+       summary: Update results of a competition 
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: resid
+          in: body
+          description: id of results 
+          required: true
+        - name: resid
+          in: body
+          description: id of competition to be updated
+          required: true
+       responses:
+         default:
+           description: successful operation
+  /api/UpdateStandings:
+     post:
+       tags:
+         - competition
+       summary: Update a competition's standings 
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: id
+          in: body
+          description: id of satndings 
+          required: true
+        - name: id
+          in: body
+          description: id of competition to be updated 
+          required: true
+       responses:
+         default:
+           description: successful operation
+  /api/UpdateArchive:
+     post:
+       tags:
+         - competition
+       summary: update competition's archive
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: archid
+          in: body
+          description: id of archive
+          required: true
+        - name: competid
+          in: body
+          description: id of competition to be updated
+          required: true
+       responses:
+         default:
+           description: successful operation        
+  /users:
+     get: 
+       tags:
+         - user
+       summary: retrive all users info from db
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       responses:
+        '200':
+          description: successful operation
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+  /users/register:
+     post: 
+       tags:
+         - user
+       summary: register a new user
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: name
+          in: body
+        - name: email
+          in: body
+          required: true
+        - name: username
+          in: body
+          required: true
+        - name: password
+          in: body
+          required: true
+       responses:
+         default:
+           description: successful operation
+  /users/authenticate:
+    post: 
+      tags:
+        - user
+      summary: login authentication
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: username
+          in: query
+          type: string
+          required: true
+        - name: password
+          in: query
+          type: password
+          required: true
+      responses:
+         default:
+           description: successful operation
+  /users/profile:
+     get: 
+       tags:
+         - user
+       summary: user profile page
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       responses:
+        '200':
+          description: successful operation
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+  /users/auth/facebook:
+     get: 
+       tags:
+         - user
+       summary: Redirect the user to Facebook for authentication
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       responses:
+        '200':
+          description: successful operation
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+  /users/auth/facebook/callback:
+     get: 
+       tags:
+         - user
+       summary: retrive all users info from db
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       responses:
+        '200':
+          description: successful operation
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+  /users/competSubscribe:
+     post:
+       tags:
+         - user
+       summary: subscribtion for a compettion
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: userid
+          in: query
+          description: user id
+          type: string
+          required: true
+        - name: competid
+          in: query
+          description: competition id
+          type: string
+          required: true
+       responses:
+         default:
+           description: successful operation
+  /users/competUnsubscribe:
+     post:
+       tags:
+         - user
+       summary: unsubscribe for a compettion
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: userid
+          in: query
+          description: user id
+          type: string
+          required: true
+        - name: competid
+          in: query
+          description: competition id
+          type: string
+          required: true
+       responses:
+         default:
+           description: successful operation
+  /users/teamSubscribe:
+     post:
+       tags:
+         - user
+       summary: subscribe for a team
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: userid
+          in: query
+          description: user id
+          type: string
+          required: true
+        - name: competid
+          in: query
+          description: team id
+          type: string
+          required: true
+       responses:
+         default:
+           description: successful operation
+  /users/teamUnsubscribe:
+     post:
+       tags:
+         - user
+       summary: unsubscribe for a team
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: userid
+          in: query
+          description: user id
+          type: string
+          required: true
+        - name: competid
+          in: query
+          description: team id
+          type: string
+          required: true
+       responses:
+         default:
+           description: successful operation
+  /users/resetpw:
+     post:
+       tags:
+         - user
+       summary: subscribe for a team
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: username
+          in: query
+          description: username
+          type: string
+          required: true
+       responses:
+         default:
+           description: successful operation
+  /users/reset/{token}:
+     post:
+       tags:
+         - user
+       summary: reset pw by setting new password
+       description: ''
+       consumes:
+        - application/json
+       produces:
+        - application/json
+       parameters:
+        - name: token
+          in: path
+          description: facebook token
+          type: string
+          required: true
+        - name: competid
+          in: query
+          description: password
+          type: string
+          required: true
+       responses:
+         default:
+           description: successful operation
+definitions:
+   Competition:
+       type: object
+       required:
+          - title
+          - standings
+          - fixtures
+          - archive
+          - results
+          - creationDate
+       properties:
+          title: 
+            type: string
+          logo:
+            type: string
+          standings:
+            type: object
+            format: ObjectId
+          fixtures:
+            type: object
+            format: ObjectId
+          archive:
+            type: object
+            format: ObjectId
+          results:
+            type: object
+            format: ObjectId
+          creationDate:
+            type: string
+            format: date
+            default: date.now
+          lastupdate:
+            type: string
+            format: date
+   Archive:
+       type: object
+       required:
+          - url
+          - creationDate
+       properties:
+          url: 
+            type: string
+          Competition: 
+            type: object
+            format: ObjectId
+          arch:
+            type: array
+          creationDate:
+            type: string
+            format: date
+            default: date.now
+          lastupdate:
+            type: string
+            format: date
+   Fixtures:
+       type: object
+       required:
+          - url
+          - creationDate
+       properties:
+          url: 
+            type: string
+          Competition: 
+            type: object
+            format: ObjectId
+          fix:
+            type: array
+          creationDate:
+            type: string
+            format: date
+            default: date.now
+          lastupdate:
+            type: string
+            format: date
+   Standings:
+       type: object
+       required:
+          - url
+          - creationDate
+       properties:
+          url: 
+            type: string
+          Competition: 
+            type: object
+            format: ObjectId
+          stand:
+            type: array
+          creationDate:
+            type: string
+            format: date
+            default: date.now
+          lastupdate:
+            type: string
+            format: date
+   Results:
+       type: object
+       required:
+          - url
+          - creationDate
+       properties:
+          url: 
+            type: string
+          Competition: 
+            type: object
+            format: ObjectId
+          results: 
+            type: array
+          creationDate:
+            type: string
+            format: date
+            default: date.now
+          lastupdate:
+            type: string
+            format: date       
+   Local:
+       type: object
+       required:
+          - email
+          - username
+          - password
+       properties:
+          name: 
+            type: string
+          username:
+            type: string
+          email:
+            type: string
+            format: email
+          password: 
+            type: string
+            format: password
+          creationDate:
+            type: string
+            format: date
+            default: date.now
+          lastupdate:
+            type: string
+            format: date
+   Facebook:
+         type: object
+         required:
+            - id
+            - token
+            - name
+         properties:
+          id: 
+            type: string
+          token: 
+            type: string
+          name: 
+            type: string
+   User:
+     type: object
+     properties:
+        local:
+          type: object
+          $ref: '#/definitions/Local'
+        facebook:
+          type: object
+          $ref: '#/definitions/Facebook'
+        Competition:
+          type: object
+          format: ObjectId
+        Team:
+          type: object
+          format: ObjectId  
+        creationDate:
+            type: string
+            format: date
+            default: date.now
+        lastupdate:
+            type: string
+            format: date
+          
+
