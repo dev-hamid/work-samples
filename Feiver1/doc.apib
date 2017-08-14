@@ -1,0 +1,91 @@
+FORMAT: 1A
+
+VERSION: 1.0.3
+
+# FLP 41
+
+Coded and Designed by AbdEl-Hamid M.
+for more details =>
+LinkedIn: abdelhamid-m
+Phone: +201090106239 - E-mail: dev-hamid@outlook.com
+
+# Group user
+
+## user's Requests [/user]
+
+### Get Posts [GET /user/post]
++ Request
+    + Attributes
+        + coordinates : `[100 , 5]` (array) - youser coordinates [latitude , longtude]
++ Response 200 (application/json)
+    + Attributes (array[Post])
+
+### Create Posts [POST /user/createpost]
++ Request
+    + Attributes
+        + user : `58cf9a3a3ca5d434952d6999` (string) - The user's id
+        + coordinates : `[100 , 5]` (array) - [longtude , latitude]
+        + content : `hello world` (string) - the content of the post
+        + tags : `['music' , 'sports']` (array) - array of tags
++ Response 200 (application/json)
+    + Attributes (Post)
+
+### DELETE Posts [DELETE /user/post]
++ Request
+    + Attributes
+        + post : `58cf9a3a3ca5d434952d6999` (string) - The post's id
++ Response 200 (application/json)
+    + Attributes
+        + numOfLikes : `22` (number) - number of likes for the deleted post
+        + numOfComments : `22` (number) - number of comments for the deleted post
+        + post(Post)
+
+### UPDATE Posts [PUT /user/post]
++ Request
+    + Attributes
+        + post : `58cf9a3a3ca5d434952d6999` (string) - The post's id
++ Response 200 (application/json)
+    + Attributes (Post)
+
+### like&unlike Posts [PUT /user/like]
++ Request
+    + Attributes
+        + post : `58cf9a3a3ca5d434952d6999` (string) - The post's id
+        + user : `58cf9a3a3ca5d434952d6999` (string) - The user's id
++ Response 200 (application/json)
+    + Attributes
+        + likes : `12` (number) - the number of likes
+        + like : `true` (boolean) - like or not
+
+### Add Comments [POST /user/comment]
++ Request
+    + Attributes
+        + user : `58cf9a3a3ca5d434952d6999` (string) - The user's id
+        + post : `58cf9a3a3ca5d434952d6999` (string) - The post's id
++ Response 200 (application/json)
+    + Attributes (Comment)
+        + date : `2017-07-06T10:39:43.788Z` (string) - the comment creation date
+
+### Edit a Comment [PUT /user/comment]
++ Request
+    + Attributes
+        +
++ Response 200 (application/json)
+
+#
+
+## Data Structures
+
+### Post
++ user : `58cf9a3a3ca5d434952d6999` (string) - The user's id
++ likesCounter : `58` (number) - the number of likes
++ commentsCounter : `58` (number) - the number of comments
++ coordinates : 100 , 5 (array) - [longtude , latitude]
++ date : `2017-07-06T10:39:43.788Z` (string) - the post creation date
++ content : `hello world` (string) - the content of the post
++ tags : music , sports (array) - array of tags
+
+### Comment
++ user : `58cf9a3a3ca5d434952d6999` (string) - The user's id
++ post : `58cf9a3a3ca5d434952d6999` (string) - The post's id
++ content : `some comment` (string) - the content of coment
